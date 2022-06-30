@@ -1,18 +1,23 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
-
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Services\PolicyService\PolicyService;
 
 class PolicyController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    public function getPolicies()
+    private PolicyService $policyService;
+  
+    public function __construct($policyService)
     {
-        echo "Hello from controller";
+        $this->policyService = $policyService;
+    }
+
+    public function getAllPolicies()
+    {
+        $policies = $this->policyService->getAllPolicies();
+
+        return $policies;
     }
 }

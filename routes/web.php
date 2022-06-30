@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("policies",[PolicyController::class,'getPolicies']);
+Route::get("policies",[PolicyController::class,'getAllPolicies']);
